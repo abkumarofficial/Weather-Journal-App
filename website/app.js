@@ -9,11 +9,11 @@ let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
 document.querySelector('#generate').addEventListener('click', getDataByZipCode);
+let feeling = ''
 
 function getDataByZipCode(){
     const zipCode = document.querySelector('#zip').value;
     const countryCode = document.querySelector('#country').value;
-    const content = document.querySelector('#feelings').value;
     if ( zipCode.length > 0 && countryCode.length > 0 && !isNaN(zipCode)) {
         // Calling Web API
         getDataFromWebAPI(zipCode, countryCode)
@@ -37,11 +37,12 @@ const getDataFromWebAPI = async (zipCode, countryCode)=>{
 }
 
 const postData = async (data) => {
+    
     const postData = {
         name: data.name !== undefined ? data.name : 'Name not Found',
         date: newDate,
         temp: data.main.temp !== undefined ? data.main.temp : 'Data not Found',
-        content: content,
+        content: document.querySelector("#feelings").value,
     }
     const response = fetch('/postdata', {
         method: 'POST',
@@ -59,5 +60,10 @@ const postData = async (data) => {
 const getData = async () => {
     const response =await fetch('/getdata')
     .then((response) => response.json())
-    .then((responseJSON) => console.log('responseJson', responseJSON))
+    .then((responseJSON) => {
+        console.log(responseJSON);
+        document.querySelector('#date').textContent = responseJSON.date;
+        document.querySelector('#temp').textContent = responseJSON.temp;
+        document.querySelector('#content').textContent = responseJSON.content;
+    })
 }
