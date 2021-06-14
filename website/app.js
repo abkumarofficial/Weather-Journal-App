@@ -4,6 +4,12 @@
 const apiKey = "cbd3f47cb61f72bbc59cf7f19ede7cb5";
 const baseURL = "api.openweathermap.org/data/2.5/weather";
 
+
+// Filling UI with dummy entries
+document.querySelector('#date').innerHTML = `<div>Date: 5.11.2021</div>`;
+document.querySelector('#temp').innerHTML = `<div>Temperature: 294.13</div>`;
+document.querySelector('#content').innerHTML = `<div>Content: Feeling Cold</div>`;
+
 // Create a new date instance dynamically with JS
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
@@ -19,10 +25,9 @@ function getDataByZipCode(){
         getDataFromWebAPI(zipCode, countryCode)
         .then((data) => postData(data));
     } else {
-        alert('Please Verify Zipcode or Country Code that you have provided');
+        alert('Invalid Zipcode or Country Code Provided, Please Verify!');
     }
-    
-    }
+}
 
 // This Function is to get the data from  WEB API
 const getDataFromWebAPI = async (zipCode, countryCode)=>{
@@ -62,8 +67,8 @@ const getData = async () => {
     .then((response) => response.json())
     .then((responseJSON) => {
         console.log(responseJSON);
-        document.querySelector('#date').textContent = responseJSON.date;
-        document.querySelector('#temp').textContent = responseJSON.temp;
-        document.querySelector('#content').textContent = responseJSON.content;
+        document.querySelector('#date').innerHTML = `<div>Date: ${responseJSON.date}</div>`;
+        document.querySelector('#temp').innerHTML = `<div>Temperature: ${responseJSON.temp}</div>`;
+        document.querySelector('#content').innerHTML = `<div>Content: ${responseJSON.content}</div>`;
     })
 }

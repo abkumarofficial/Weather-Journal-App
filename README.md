@@ -1,10 +1,32 @@
-# Weather-Journal App Project
+# Weather Journal App Project
 
-## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+#### What I used: HTML, CSS, Javascript (Vanilla)
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+## Description
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+This is the third project for [Udacity's Front End Web Developer Nanodegree program](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd0011).
+The aim of this project is to create an asynchronous web app that uses Weather API ([OpenWeatherMap](https://openweathermap.org/)) and user data to dynamically update the UI.
+
+## Demo
+![Weather Journal App demo](https://github.com/emiribegic/weather-journal-app/blob/master/demo/weather-journal-app-demo.gif)
+
+## Setup
+
+To run this web app, follow the steps below:
+
+1. Make sure that Node and packages (Express, Body-Parser, and Cors) are installed on your local machine.
+
+2. Acquire API credentials from [OpenWeatherMap](https://openweathermap.org/) website. 
+Delete the existing credentials in the `app.js (apiKey)` and use your own credentials.
+
+3. Run the command  `npm i` followed by `node server.js` in your terminal to start the server.
+
+4. You can access it by going to http://localhost:8000/
+
+5. Provide the zipcode and country code to get the result.
+
+## Example
+```
+zipcode: 560037
+country code: IN
+feeling (optional): cold

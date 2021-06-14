@@ -24,18 +24,15 @@ app.use(express.static('website'));
 
 
 // Setup Server
-const port = 3000;
+const port = 8000;
 
 const server = app.listen(port, ()=>{console.log(`running on localhost: ${port}`)});
 
 app.get('/getdata', function (req, res) {
-    console.log('get request came', projectData)
     res.send(projectData);
   })
 
 app.post('/postdata', (req, res) => {
     projectData = req.body;
-    console.log('data recieved by server', req.body);
-    console.log('Project data set', projectData);
     res.send(projectData);
 });
