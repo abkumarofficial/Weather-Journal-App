@@ -1,18 +1,18 @@
 // const { json } = require("body-parser");
 
 /* Global Variables */
-const apiKey = "cbd3f47cb61f72bbc59cf7f19ede7cb5";
+const apiKey = "cbd3f47cb61f72bbc59cf7f19ede7cb5&units=metric";
 const baseURL = "api.openweathermap.org/data/2.5/weather";
 
 
 // Filling UI with dummy entries
-document.querySelector('#date').innerHTML = `<div>Date: 5.11.2021</div>`;
-document.querySelector('#temp').innerHTML = `<div>Temperature: 294.13</div>`;
+document.querySelector('#date').innerHTML = `<div>Date: 6.11.2021</div>`;
+document.querySelector('#temp').innerHTML = `<div>Temperature(celsius): 29</div>`;
 document.querySelector('#content').innerHTML = `<div>Content: Feeling Cold</div>`;
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = `${d.getMonth() + 1}.${d.getDate()}.${d.getFullYear()}`
 
 document.querySelector('#generate').addEventListener('click', getDataByZipCode);
 let feeling = ''
@@ -68,7 +68,7 @@ const getData = async () => {
     .then((responseJSON) => {
         console.log(responseJSON);
         document.querySelector('#date').innerHTML = `<div>Date: ${responseJSON.date}</div>`;
-        document.querySelector('#temp').innerHTML = `<div>Temperature: ${responseJSON.temp}</div>`;
+        document.querySelector('#temp').innerHTML = `<div>Temperature (celsius): ${responseJSON.temp}</div>`;
         document.querySelector('#content').innerHTML = `<div>Content: ${responseJSON.content}</div>`;
     })
 }

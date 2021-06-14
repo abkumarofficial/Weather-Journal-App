@@ -2,7 +2,7 @@
 projectData = {
     name : 'Abhijeet',
     temp : '294.13',
-    date : '5.11.2021',
+    date : '6.11.2021',
     content : 'Feeling Cold',
 };
 
